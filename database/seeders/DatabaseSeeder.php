@@ -23,5 +23,8 @@ class DatabaseSeeder extends Seeder
             "email" => "admin@admin.com",
             "password" => "123456"
         ]);
+        $this->call(AreaSeed::class);
+        $this->call(CitySeed::class);
+        $this->call(HubSeed::class);
     }
 }

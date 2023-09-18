@@ -1,5 +1,4 @@
 import TokenUtil from "../utils/token-util";
-import authClient from '../http-clients/auth-client';
 import global from "../global";
 export default (to, from, next) => {
     if (!TokenUtil.get()) {
