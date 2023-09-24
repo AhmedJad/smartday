@@ -4,7 +4,7 @@
     <PageLoader color="#5ae4aa" />
     <!-- ======= Header ======= -->
     <header id="header" class="header d-flex align-items-center">
-            <Lang />
+            <Lang :page="route.name" />
 
       <div
       style="margin-top: 19px;"
@@ -54,6 +54,13 @@
                 >{{ $t("APPLY_JOB") }}</router-link
               >
             </li>
+            <li>
+              <router-link
+                :class="{ active: currentPage == 'business-contractor' }"
+                to="/business-contractor"
+                >{{ $t("Business contractor") }}
+              </router-link>
+            </li>
             <li class="dropdown">
               <a :class="{ active: currentPage == 'products' }" href="#"
                 ><span>{{ $t("PRODUCTS") }}</span>
@@ -97,7 +104,7 @@
                 <h3>{{$t("CONTACT")}}</h3>
                 <p>
                   <div>{{ $t("sd_address") }}</div>
-                  <div>
+                  <div style="margin-top:20px">
                   {{ $t("PHONE") }} : <span dir="ltr">+966556668145</span>
                   </div>
                   <div>
@@ -273,6 +280,8 @@ export default {
     onMounted(() => {
       lang.changeWebLang(LangUtil.get());
       getCategories();
+          data.currentPage = route.name;
+
     });
     watch(
       () => route.name,

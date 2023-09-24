@@ -61,6 +61,12 @@ Route::prefix("installs")->group(function () {
 });
 
 
+Route::prefix("business-contracts")->group(function () {
+    Route::post("", "BusinessContractorController@store");
+    Route::get("areas", "BusinessContractorController@getAreas");
+    Route::get("cities", "BusinessContractorController@getCities");
+});
+
 Route::prefix("recruitments")->group(function () {
     Route::post("", "RecruitmentController@store");
 });

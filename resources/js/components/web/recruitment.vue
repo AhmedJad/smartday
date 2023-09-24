@@ -11,6 +11,7 @@
       <h2>{{ $t("APPLY_JOB") }}</h2>
       <ol>
         <li>
+          business-contractor
           <router-link to="/home">{{ $t("HOME") }}</router-link>
         </li>
         <li>{{ $t("APPLY_JOB") }}</li>

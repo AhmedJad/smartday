@@ -1,13 +1,14 @@
 <template>
 <div class="home-container">
-    <!-- ======= Hero Section ======= -->
+    <!-- ======= Hero Section =======
+
   <section id="hero" class="hero">
     <div class="info d-flex align-items-center">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
             <h2 data-aos="fade-down">
-              <span>Smart Day</span>
+              <span>Test Day</span>
             </h2>
             <p data-aos="fade-up">{{ $t("slider_welcome_message") }}<br /></p>
             <a
@@ -29,6 +30,13 @@
       data-bs-ride="carousel"
       data-bs-interval="5000"
     >
+
+    <div class="landing-video">
+      <video>
+        <source src="(/web/assets/video/video.mp4" />
+      </video>
+    </div>
+
       <div
         class="carousel-item active"
         style="background-image: url(/web/assets/img/slide-1.png)"
@@ -45,6 +53,7 @@
         class="carousel-item"
         style="background-image: url(/web/assets/img/slide-4.png)"
       ></div>
+
       <a
         class="carousel-control-prev"
         href="#hero-carousel"
@@ -71,7 +80,47 @@
     </div>
   </section>
 
-  <!-- End Hero Section -->
+  End Hero Section -->
+
+  <section id="hero" class="hero">
+<video 	autoplay loop muted>
+  <source src="https://media.zid.store/284a9a0c-90c5-46ad-82ad-1fdb73e1f53c/966aca42-78a5-488f-ba61-e9fe30d88e9b.mp4"/>
+
+     Your browser does not support the video tag.
+</video>
+  </section>
+  <section id="welcome-section">
+    <div class="info  d-flex align-items-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center">
+            <div class="logo-black"  data-aos="fade" data-aos-delay="50" >
+              <img src="/web/assets/logo-blk.jpeg"/>
+            </div>
+
+            <p
+              data-aos="fade-left"
+              data-aos-delay="200" >{{ $t("slider_welcome_message_first") }}</p>
+              <p
+              data-aos="fade-left"
+              data-aos-delay="450" >{{ $t("slider_welcome_message_second") }}</p>
+              <p
+              data-aos="fade-left"
+              data-aos-delay="650" >{{ $t("slider_welcome_message_third") }}</p>
+              <p
+              data-aos="fade-left"
+              data-aos-delay="850" >{{ $t("slider_welcome_message_fourth") }}</p>
+            <a
+              href="sd.sa"
+              class="btn-get-started "
+              data-aos="zoom-in-up"
+              data-aos-delay="1050"
+              >{{ $t("SEE_VEIDO") }}</a >
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
   <!-- Modal HTML -->
   <div id="myModal" class="modal fade">
     <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -113,8 +162,7 @@
                 data-aos="fade-up" data-aos-delay="100">
                 <ul>
                   <li>
-                                      {{$t("Welcome, dear customer, to join us in requesting the installation service for products at Smart Day, we are proud to provide distinguished service to all our customers if they wish to obtain installation and programming services for products")}}
-
+                    {{$t("Welcome, dear customer, to join us in requesting the installation service for products at Smart Day, we are proud to provide distinguished service to all our customers if they wish to obtain installation and programming services for products")}}
                   </li>
                   <li>{{$t("Installation and programming service for products with great care under technical supervision and technical support. We care about the smallest details")}}</li>
                   <li>{{$t("A technical team with experience and high efficiency in installation and programming")}}</li>
@@ -138,7 +186,7 @@
 
                   </li>
                   <li>
-                    
+
                 {{$t("Also make sure that you will get a two-year warranty. You can get technical support and training on how to deal with our products for the period that suits you during the warranty period through the technical support window in the store.")}}
 
                   </li>
@@ -216,7 +264,7 @@
               </p>
             </div>
           </div>
-         
+
           <div
             class="icon-box d-flex position-relative"
             data-aos="fade-up"
@@ -234,7 +282,7 @@
               </p>
               <router-link to="/notification-service" class="apply-now">{{$t("APPLY_NOW")}}</router-link>
             </div>
-                     
+
             <div>
 
             </div>
@@ -255,13 +303,13 @@
         <div class="row justify-content-between gy-4">
 
           <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
-                  
+
             <div class="content">
               <h3>
                 {{$t("Leave us a note and we'll reach out soon")}}
               </h3>
               <p>
-                                 {{$t("Welcome, dear customer, to join us in requesting the installation service for products at Smart Day, we are proud to provide distinguished service to all our customers if they wish to obtain installation and programming services for products")}} 
+                                 {{$t("Welcome, dear customer, to join us in requesting the installation service for products at Smart Day, we are proud to provide distinguished service to all our customers if they wish to obtain installation and programming services for products")}}
                                 {{$t("you can fill out the form")}} <router-link to="/notification-service">{{$t("HERE")}}</router-link>
               </p>
             </div>
@@ -286,7 +334,7 @@
                         {{ $t("NAME") + " " + $t(error.$validator) }}
                       </div>
                     </div>
-                    
+
                 </div>
 
                 <div class="col-md-12 ">
@@ -337,7 +385,7 @@
 </template>
 
 <script>
-import { onMounted, reactive, toRefs } from "vue";
+import { onMounted, reactive, ref, toRefs } from "vue";
 import useVuelidate from "@vuelidate/core";
 import { required, email } from "@vuelidate/validators";
 
@@ -345,15 +393,20 @@ import { toast } from "vue3-toastify";
 import contactClient from "../../http-clients/web/contact-client";
 import { useI18n } from "vue-i18n";
 
+
+
+
 export default {
   setup() {
-    const { t, locale } = useI18n({ useScope: "global" });
+
+    // Form setup
+    const { t, locale } = useI18n({ useScope: 'global' });
 
     const form = reactive({
-      name: "",
-      phone: "",
-      email: "",
-      message: "",
+      name: '',
+      phone: '',
+      email: '',
+      message: '',
     });
 
     const rules = {
@@ -361,9 +414,10 @@ export default {
       email: { required, email },
       phone: { required },
     };
+
     const v$ = useVuelidate(rules, form);
-    onMounted(() => {});
-    //Methods
+
+    // Methods
     function getForm() {
       return {
         name: form.name,
@@ -372,6 +426,7 @@ export default {
         message: form.message,
       };
     }
+
     function store() {
       if (v$.value.$invalid) {
         v$.value.$touch();
@@ -381,17 +436,20 @@ export default {
         .store(getForm())
         .then(() => {
           v$.value.$reset();
-          form.name = "";
-          form.phone = "";
-          form.email = "";
-          form.message = "";
-          toast.success(t("SENT_SUCCESSFULLY"), {
+          form.name = '';
+          form.phone = '';
+          form.email = '';
+          form.message = '';
+          toast.success(t('SENT_SUCCESSFULLY'), {
             autoClose: 2000,
-            position: "top-center",
+            position: 'top-center',
           });
         })
-        .catch((error) => {});
+        .catch((error) => {
+          // Handle the error
+        });
     }
+
     return {
       store,
       ...toRefs(form),
@@ -399,9 +457,81 @@ export default {
     };
   },
 };
+
+
+
+
 </script>
 
 <style lang="scss">
+
+.header {
+    background-color: black !important;
+    position: relative !important;
+    padding-bottom: 15px !important;
+}
+
+#hero {
+    width: 100%;
+    max-width: 100% !important;
+}
+#hero video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    max-width: 100%;
+    max-height: 100%;
+}
+#welcome-section .info {
+    position: relative;
+    inset: 0;
+    z-index: 2;
+}
+
+#welcome-section .info .btn-get-started {
+  font-family: var(--font-primary);
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 40px;
+  border-radius: 50px;
+  margin: 10px;
+  color: #fff;
+  border: 2px solid var(--color-primary);
+  background-color: #5ae4aa;
+
+}
+
+#welcome-section  .logo-black {
+    margin-bottom: 20px;
+}
+#welcome-section  .logo-black img {
+    width: 170px;
+    height: 100%;
+    border-bottom: 0.3rem solid #5ae4aa;
+    padding-bottom: 15px;
+}
+
+#welcome-section .info p {
+    color: #181818 !important;
+    margin-bottom: 10px;
+}
+#welcome-section {
+    padding: 60px 0 !important;
+}
+
+
+
+
+
+.header .logo img {
+    max-height: 40px;
+    margin-left: 6px;
+    height: 40px;
+}
+
+
 .home-container {
   .get-started .php-email-form button[type="submit"] {
     &:hover {
@@ -486,5 +616,10 @@ export default {
     background-color: unset !important;
     border-radius: 0 !important;
   }
+
+}
+.web-lang-container {
+    border-color: rgb(68 68 68) !important;
 }
 </style>
+

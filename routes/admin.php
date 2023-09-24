@@ -83,6 +83,12 @@ Route::prefix("installs")->group(function () {
     Route::post("send-email", "InstallController@sendEmail");
 });
 
+Route::prefix("business-contracts")->group(function () {
+    Route::delete("{id}", "BusinessContractorController@delete");
+    Route::get("", "BusinessContractorController@index");
+});
+
+
 Route::prefix("media-manager")->group(function () {
     Route::post("", "MediaManagerController@store");
     Route::get("", "MediaManagerController@getAllMedia");

@@ -1,6 +1,9 @@
 <template>
   <div class="d-flex justify-content-end">
-    <li class="web-lang-container">
+    <li
+      :style="props.page == 'home' ? 'border-color:#525151' : 'border-color:#6e6c6c'"
+      class="web-lang-container"
+    >
       <a v-if="$i18n.locale == 'ar'" @click.prevent="changeLang('en')" href="#">
         <img src="/images/english.png" /> English
       </a>
@@ -18,8 +21,9 @@ export default {
     function changeLang(locale) {
       lang.changeWebLang(locale);
     }
-    return { changeLang };
+    return { changeLang, props: props };
   },
+  props: ["page"],
 };
 </script>
 <style lang="scss">
@@ -44,7 +48,7 @@ export default {
       font-size: 12px;
     }
   }
-  border-bottom: 1px solid #525151;
+  border-bottom: 1px solid;
   color: #fff;
   top: 2px;
   right: 0;

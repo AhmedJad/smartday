@@ -8,6 +8,7 @@ import ContactUsTable from '../components/dashboard/contact-us/item-table';
 import RecruitmentTable from '../components/dashboard/recruitment/item-table';
 import NotificiationServiceTable from '../components/dashboard/notification-service/item-table';
 import Install from '../components/dashboard/install/item-table';
+import BusinessContractor from '../components/dashboard/business-contractor/item-table';
 import CategoryForm from '../components/dashboard/category/item-form';
 import CategoryTable from '../components/dashboard/category/item-table';
 import ProductTable from '../components/dashboard/product/item-table';
@@ -21,8 +22,9 @@ export default [{
     beforeEnter: [
         AuthenticatedAdminGuard
     ],
+    
     children: [
-        { path: "products", component: ProductTable, name: "products" },
+        { path: "products", component: ProductTable, name: "admin-products" },
         { path: "product-form/:id", component: ProductForm },
         { path: "base-categories", component: BaseCategoryTable, name: "base-categories" },
         { path: "base-categories-form/:id", component: BaseCategoryForm },
@@ -33,6 +35,7 @@ export default [{
         { path: "recruitment", component: RecruitmentTable, name: "admin-recruitment" },
         { path: "notification-service", component: NotificiationServiceTable, name: "monitoring" },
         { path: "installs", component: Install, name: "admin-install" },
+        { path: "business-contractor", component: BusinessContractor, name: "admin-business-contractor" },
     ]
 },
 {

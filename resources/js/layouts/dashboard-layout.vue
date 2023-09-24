@@ -111,10 +111,12 @@
           </a>
         </div>
       </div> -->
-      <div class="item visit-store">
-        <i class="icon-copy dw dw-worldwide"></i>
-        <span>{{ $t("VISIT_STORE") }}</span>
-      </div>
+      <a href="/home">
+        <div class="item visit-store">
+          <i class="icon-copy dw dw-worldwide"></i>
+          <span>{{ $t("VISIT_STORE") }}</span>
+        </div>
+      </a>
       <div class="item">
         <Lang />
       </div>
@@ -405,7 +407,7 @@
     class="left-side-bar"
   >
     <div class="brand-logo">
-      <a href="index.html">
+      <router-link to="/admin/products">
         <img src="/images/admin-logo.png" alt="" class="dark-logo" />
         <img
           style="margin: 0 10px"
@@ -414,7 +416,7 @@
           class="light-logo"
         />
         {{ $t("DASHBOARD") }}
-      </a>
+      </router-link>
       <div class="close-sidebar" data-toggle="left-sidebar-close">
         <i class="ion-close-round"></i>
       </div>
@@ -470,8 +472,8 @@
  -->
           <li>
             <router-link
-              :class="{ activeLink: currentPage == 'products' }"
-              @click="currentPage = 'products'"
+              :class="{ activeLink: currentPage == 'admin-products' }"
+              @click="currentPage = 'admin-products'"
               class="dropdown-toggle no-arrow"
               to="/admin/products"
               ><span class="micon dw dw-invoice"></span
@@ -527,6 +529,19 @@
               }}</span></router-link
             >
           </li>
+          <li>
+            <router-link
+              :class="{ activeLink: currentPage == 'admin-business-contractor' }"
+              @click="currentPage = 'admin-business-contractor'"
+              class="dropdown-toggle no-arrow"
+              to="/admin/business-contractor"
+              ><span class="micon dw dw-invoice"></span
+              ><span class="mtext">{{
+                $t("Business contractor")
+              }}</span></router-link
+            >
+          </li>
+          
           <div class="sidebar-group">
             <span>{{ $t("CONTENTS") }}</span>
           </div>
